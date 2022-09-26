@@ -9,10 +9,15 @@ import { RootObject } from "../../types";
 interface IProps {
   song: RootObject;
   i: number;
+  isPlaying: boolean;
+  activeSong: RootObject;
+  data: RootObject[];
 }
 
-const SongCard = ({ song, i }: IProps) => {
-  const activeSong = "test";
+const SongCard = ({ song, i, isPlaying, activeSong, data }: IProps) => {
+  const handlePauseClick = () => {};
+
+  const handlePlayClick = () => {};
 
   return (
     <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
@@ -24,7 +29,13 @@ const SongCard = ({ song, i }: IProps) => {
               : "hidden"
           }`}
         >
-          <PlayPause />
+          <PlayPause
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            song={song}
+            handlePause={handlePauseClick}
+            handlePlay={handlePlayClick}
+          />
         </div>
         <img alt="song_img" src={song.images?.coverart} />
       </div>
