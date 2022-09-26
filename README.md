@@ -1,3 +1,3 @@
 # Splotify
 
-A Spotify clone using TypeScript, React, Shazam Core API, Redux Toolkit and Tailwind
+A Spotify-style music app using TypeScript, React, Redux Toolkit and Tailwind, with data pulled in using the Shazam Core API.

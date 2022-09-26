@@ -1,9 +1,28 @@
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
+import PlayPause from "./PlayPause";
+// @ts-ignore
+import { playPause, setActiveSong } from "../redux/features/playerSlice";
+import { RootObject } from "../../types";
 
-const SongCard = () => {
-  return (
-    <div>SongCard</div>
-  )
+interface IProps {
+  song: RootObject;
+  i: number;
 }
 
-export default SongCard
+const SongCard = ({ song, i }: IProps) => {
+  const activeSong = 'test'
+  
+  return (
+    <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
+      <div className="relative w-full h-56 group">
+        <div className={`absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex ${activeSong?.title === song.title ? 'flex bg-black bg-opacity-70' : 'hidden'}`}>
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SongCard;
