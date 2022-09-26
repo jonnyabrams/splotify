@@ -12,6 +12,19 @@ import { useGetTopChartsQuery } from "../redux/services/shazamCore";
 
 import "swiper/css";
 import "swiper/css/free-mode";
+import SongBar from "./SongBar";
+import { RootObject } from "../../types";
+
+interface IProps {
+  song: RootObject;
+  i: number;
+}
+
+const TopChartCard = ({ song, i }: IProps) => (
+  <div className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg cursor-pointer mb-2">
+    {song.title}
+  </div>
+);
 
 const TopPlay = () => {
   const dispatch = useDispatch();
@@ -29,12 +42,31 @@ const TopPlay = () => {
     dispatch(playPause(false));
   };
 
-  const handlePlayClick = () => {
+  const handlePlayClick = (song: RootObject, i: number) => {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
 
-  return <div ref={divRef}>TopPlay</div>;
+  return (
+    <div
+      ref={divRef}
+      className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex flex-col"
+    >
+      <div className="w-full flex flex-col">
+        <div className="flex flex-row justify-between items-center">
+          <h2 className="text-white font-bold text-2xl">Top Charts</h2>
+          <Link to="/top-charts"></Link>
+          <p className="text-gray-300 text-base cursor-pointer">See more</p>
+        </div>
+
+        <div className="mt-4 flex flex-col gap-1">
+          {topPlays?.map((song: RootObject, i: number) => (
+            <TopChartCard song={song} i={i} key={song.key} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default TopPlay;
