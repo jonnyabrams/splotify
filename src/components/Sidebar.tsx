@@ -5,7 +5,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { links } from "../assets/constants";
 import { HiOutlineMenu } from "react-icons/hi";
 
-const NavLinks = ({ handleClick }) => (
+const NavLinks = ({ handleClick }: { handleClick: any }) => (
   <div className="mt-10">
     {links.map((item) => (
       <NavLink
@@ -28,7 +28,7 @@ const Sidebar = () => {
     <>
       <div className="md:flex hidden flex-col w-[240px] py-10 px-4 bg-[#191624]">
         <span className="w-full h-14 object-contain text-white">SPLOTIFY</span>
-        <NavLinks />
+        <NavLinks handleClick={() => {}} />
       </div>
 
       <div className="absolute md:hidden block top-6 right-3">
