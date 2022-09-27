@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import axios from "axios";
 
 import { Error, Loader, SongCard } from "../components";
 // @ts-ignore
