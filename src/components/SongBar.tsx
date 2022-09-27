@@ -6,7 +6,7 @@ import PlayPause from "./PlayPause";
 interface IProps {
   song: RootObject;
   i: number;
-  artistId: string;
+  artistId?: string;
   isPlaying: boolean;
   activeSong: RootObject;
   handlePauseClick: () => void;

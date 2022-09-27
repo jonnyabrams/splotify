@@ -2,7 +2,7 @@ import SongBar from "./SongBar";
 import { RootObject } from "../../types";
 
 interface IProps {
-  artistId: string;
+  artistId?: string;
   data: RootObject[];
   isPlaying: boolean;
   activeSong: RootObject;

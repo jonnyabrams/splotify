@@ -2,15 +2,13 @@ import { Link } from "react-router-dom";
 import { RootObject } from "../../types";
 
 interface IProps {
-  artistId: string;
-  songData: RootObject;
+  artistId?: string;
+  songData?: RootObject;
   artistData?: any;
 }
 
 const DetailsHeader = ({ artistId, artistData, songData }: IProps) => {
-  const artist = artistData?.artists[artistId]?.attributes;
-
-  console.log(songData)
+  const artist = artistData?.artists[artistId!]?.attributes;
 
   return (
     <div className="relative w-full flex flex-col">
