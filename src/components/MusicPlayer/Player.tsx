@@ -1,7 +1,29 @@
 import { useEffect, useRef } from "react";
+import { RootObject } from "../../../types";
 
-const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate, onLoadedData, repeat }) => {
-  const ref = useRef(null);
+interface IProps {
+  activeSong: RootObject;
+  isPlaying: boolean;
+  volume: number | string;
+  seekTime: number;
+  onEnded: () => void;
+  onTimeUpdate: any;
+  onLoadedData: any;
+  repeat: boolean;
+  currentIndex?: number;
+}
+
+const Player = ({
+  activeSong,
+  isPlaying,
+  volume,
+  seekTime,
+  onEnded,
+  onTimeUpdate,
+  onLoadedData,
+  repeat,
+}: IProps) => {
+  const ref = useRef<any>(null);
   // eslint-disable-next-line no-unused-expressions
   if (ref.current) {
     if (isPlaying) {
