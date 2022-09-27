@@ -2,6 +2,7 @@ export interface RootObject {
   albumadamid?: string;
   alias?: string;
   artists: Artist[];
+  attributes: any;
   genres?: {primary: string};
   highlightsurls: Highlightsurls;
   hub: Hub;
