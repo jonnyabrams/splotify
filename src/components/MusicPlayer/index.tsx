@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import {
@@ -6,19 +6,24 @@ import {
   prevSong,
   playPause, // @ts-ignore
 } from "../../redux/features/playerSlice";
+// @ts-ignore
 import Controls from "./Controls";
+// @ts-ignore
 import Player from "./Player";
+// @ts-ignore
 import Seekbar from "./Seekbar";
+// @ts-ignore
 import Track from "./Track";
+// @ts-ignore
 import VolumeBar from "./VolumeBar";
 
 const MusicPlayer = () => {
   const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
-    useSelector((state) => state.player);
+    useSelector((state: any) => state.player);
   const [duration, setDuration] = useState(0);
   const [seekTime, setSeekTime] = useState(0);
   const [appTime, setAppTime] = useState(0);
-  const [volume, setVolume] = useState(0.3);
+  const [volume, setVolume] = useState<number | string>(0.3);
   const [repeat, setRepeat] = useState(false);
   const [shuffle, setShuffle] = useState(false);
   const dispatch = useDispatch();
@@ -81,7 +86,9 @@ const MusicPlayer = () => {
           value={appTime}
           min="0"
           max={duration}
-          onInput={(event) => setSeekTime(event.target.value)}
+          onInput={(event: any) =>
+            setSeekTime((event.target as HTMLFormElement).value)
+          }
           setSeekTime={setSeekTime}
           appTime={appTime}
         />
@@ -93,15 +100,21 @@ const MusicPlayer = () => {
           repeat={repeat}
           currentIndex={currentIndex}
           onEnded={handleNextSong}
-          onTimeUpdate={(event) => setAppTime(event.target.currentTime)}
-          onLoadedData={(event) => setDuration(event.target.duration)}
+          onTimeUpdate={(event: any) =>
+            setAppTime((event.target as HTMLFormElement).currentTime)
+          }
+          onLoadedData={(event: any) =>
+            setDuration((event.target as HTMLFormElement).duration)
+          }
         />
       </div>
       <VolumeBar
         value={volume}
         min="0"
         max="1"
-        onChange={(event) => setVolume(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) =>
+          setVolume(event.target.value)
+        }
         setVolume={setVolume}
       />
     </div>
