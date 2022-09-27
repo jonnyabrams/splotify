@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
 
 import { RootObject } from "../../types";
@@ -6,8 +7,8 @@ interface IProps {
   isPlaying: boolean;
   activeSong: RootObject;
   song: RootObject;
-  handlePause: () => void;
-  handlePlay: () => void;
+  handlePause: MouseEventHandler<SVGElement>;
+  handlePlay: MouseEventHandler<SVGElement> | ((song: RootObject, i: number) => void);
 }
 
 const PlayPause = ({
