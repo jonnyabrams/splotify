@@ -1,5 +1,8 @@
 export interface RootObject {
+  albumadamid?: string;
+  alias?: string;
   artists: Artist[];
+  genres?: {primary: string};
   highlightsurls: Highlightsurls;
   hub: Hub;
   images: Images;
