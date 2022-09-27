@@ -5,7 +5,7 @@ import { DetailsHeader, Error, Loader, RelatedSongs } from "../components";
 // @ts-ignore
 import { setActiveSong, playPause } from "../redux/features/playerSlice";
 // @ts-ignore
-import { useGetSongDetailsQuery } from "../redux/services/shazamCore";
+import { useGetSongDetailsQuery, useGetSongRelatedQuery } from "../redux/services/shazamCore";
 
 const SongDetails = () => {
   const dispatch = useDispatch();
@@ -13,6 +13,8 @@ const SongDetails = () => {
   const { activeSong, isPlaying } = useSelector((state: any) => state.player);
   const { data: songData, isFetching: isFetchingSongDetails } =
     useGetSongDetailsQuery({ songid });
+  const { data, isFetching: isFetchingRelatedSongs, error } =
+    useGetSongRelatedQuery({ songid });
 
   return (
     <div className="flex flex-col">
@@ -32,6 +34,9 @@ const SongDetails = () => {
           )}
         </div>
       </div>
+      <RelatedSongs 
+
+      />
     </div>
   );
 };
