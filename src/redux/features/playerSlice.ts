@@ -29,7 +29,9 @@ const playerSlice = createSlice({
     },
 
     nextSong: (state, action) => {
+      // @ts-ignore
       if (state.currentSongs[action.payload]?.track) {
+        // @ts-ignore
         state.activeSong = state.currentSongs[action.payload]?.track;
       } else {
         state.activeSong = state.currentSongs[action.payload];
@@ -40,7 +42,9 @@ const playerSlice = createSlice({
     },
 
     prevSong: (state, action) => {
+      // @ts-ignore
       if (state.currentSongs[action.payload]?.track) {
+        // @ts-ignore
         state.activeSong = state.currentSongs[action.payload]?.track;
       } else {
         state.activeSong = state.currentSongs[action.payload];
