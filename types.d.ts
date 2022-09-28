@@ -13,6 +13,7 @@ export interface RootObject {
   share: Share;
   subtitle: string;
   title: string;
+  track?: any;
   type: RootObjectType;
   url: string;
 }
